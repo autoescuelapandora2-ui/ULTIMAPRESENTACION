@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convocatoria 27/28 julio · Autoescuela PANDORA</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --azul: #2228A2;
+    --rojo: #E8192C;
+    --papel: #F6F5F0;
+    --oscuro: #1E1E1E;
+    --blanco: #ffffff;
+  }
+
+  body {
+    background-color: var(--papel);
+    background-image:
+      linear-gradient(var(--azul) 1px, transparent 1px),
+      linear-gradient(90deg, var(--azul) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-attachment: fixed;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    padding: 0 0 60px 0;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-color: rgba(246, 245, 240, 0.92);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .mancha {
+    position: fixed;
+    border-radius: 50%;
+    background: var(--rojo);
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .mancha-1 { width: 320px; height: 320px; top: -80px; right: -80px; }
+  .mancha-2 { width: 200px; height: 200px; bottom: 60px; left: -60px; }
+
+  .contenido {
+    position: relative;
+    z-index: 1;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  header {
+    padding: 40px 0 22px;
+    text-align: center;
+  }
+
+  .etiqueta-sup {
+    display: inline-block;
+    background: var(--rojo);
+    color: var(--blanco);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--azul);
+    display: block;
+    letter-spacing: 2px;
+  }
+
+  .subtitulo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--oscuro);
+    opacity: 0.6;
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  /* --- Cuenta atrás --- */
+  .cuenta-atras {
+    background: var(--oscuro);
+    padding: 20px 22px;
+    margin: 4px 0 24px;
+    text-align: center;
+  }
+
+  .cuenta-etiqueta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 8px;
+  }
+
+  .cuenta-numero {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    line-height: 0.9;
+    color: var(--blanco);
+  }
+
+  .cuenta-numero span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.5px;
+    display: block;
+    margin-top: 6px;
+  }
+
+  /* --- Bloque explicación --- */
+  .bloque-info {
+    background: var(--blanco);
+    border: 1.5px solid var(--azul);
+    padding: 18px 20px;
+    margin-bottom: 24px;
+  }
+
+  .bloque-info p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--oscuro);
+  }
+
+  .bloque-info p + p {
+    margin-top: 10px;
+  }
+
+  .bloque-info strong {
+    color: var(--azul);
+  }
+
+  .seccion-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--azul);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding-left: 2px;
+  }
+
+  /* --- Requisitos --- */
+  .lista-requisitos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+
+  .requisito {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--rojo);
+    padding: 16px 18px;
+  }
+
+  .requisito-marca {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .requisito-texto {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--blanco);
+    line-height: 1.3;
+  }
+
+  .requisito-texto span {
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+    opacity: 0.8;
+    margin-top: 2px;
+  }
+
+  .divider {
+    height: 1.5px;
+    background: var(--azul);
+    opacity: 0.15;
+    margin: 24px 0;
+  }
+
+  /* --- Bloque límite --- */
+  .bloque-limite {
+    background: var(--azul);
+    padding: 22px 22px 20px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bloque-limite::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .limite-etiqueta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 6px;
+  }
+
+  .limite-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    line-height: 1.05;
+    color: var(--blanco);
+    letter-spacing: 1px;
+  }
+
+  .limite-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+
+  /* --- CTA WhatsApp --- */
+  .btn-whatsapp {
+    display: block;
+    width: 100%;
+    background: var(--oscuro);
+    color: var(--blanco);
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    padding: 18px 20px;
+    transition: background 0.15s, transform 0.1s;
+  }
+
+  .btn-whatsapp span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    opacity: 0.6;
+    margin-top: 2px;
+  }
+
+  .btn-whatsapp:active {
+    background: var(--rojo);
+    transform: scale(0.98);
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 28px;
+    padding: 0 20px;
+  }
+
+  .footer-dir {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--oscuro);
+    opacity: 0.4;
+    letter-spacing: 0.3px;
+    line-height: 1.7;
+  }
+
+  .footer-num {
+    display: inline-block;
+    margin-top: 8px;
+    background: var(--azul);
+    color: var(--blanco);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mancha mancha-1"></div>
+<div class="mancha mancha-2"></div>
+
+<div class="contenido">
+  <header>
+    <div class="etiqueta-sup">Convocatoria de examen</div>
+    <span class="logo">PANDORA</span>
+    <p class="subtitulo">Examen teórico · 27 o 28 de julio</p>
+  </header>
+
+  <div class="cuenta-atras">
+    <div class="cuenta-etiqueta">Última oportunidad con garantía en</div>
+    <div class="cuenta-numero" id="numDias">–
+      <span id="textoDias">calculando…</span>
+    </div>
+  </div>
+
+  <div class="bloque-info">
+    <p>La convocatoria del examen teórico es el <strong>27 o 28 de julio</strong>.</p>
+    <p>El día y la hora los asigna la DGT — <strong>no se pueden elegir</strong>.</p>
+  </div>
+
+  <p class="seccion-titulo">Para entrar en esta convocatoria necesitas</p>
+
+  <div class="lista-requisitos">
+    <div class="requisito">
+      <div class="requisito-marca">1</div>
+      <div class="requisito-texto">Reconocimiento médico
+        <span>Si no lo tienes hecho, es prioritario</span>
+      </div>
+    </div>
+    <div class="requisito">
+      <div class="requisito-marca">2</div>
+      <div class="requisito-texto">Resto del pago teórico
+        <span>Cerrado al 100% antes de la fecha límite</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="bloque-limite">
+    <div class="limite-etiqueta">Fecha límite</div>
+    <div class="limite-titulo">VIERNES 10 DE JULIO</div>
+    <div class="limite-sub">Es el último día en el que podemos garantizar tu entrada en esta convocatoria. A partir de aquí, no podemos asegurar que tengas plaza.</div>
+  </div>
+
+  <a class="btn-whatsapp"
+     href="https://wa.me/34666999295?text=Hola%2C+tengo+una+duda+sobre+la+convocatoria+del+27%2F28+de+julio.+%C2%BFMe+pod%C3%A9is+ayudar%3F"
+     target="_blank" rel="noopener">
+    Tengo dudas, escríbeme
+    <span>Te respondemos el mismo día</span>
+  </a>
+
+  <footer>
+    <p class="footer-dir">
+      Calle Rodrigo de Bastidas, 13<br>
+      El Puerto de Santa María · Cádiz
+    </p>
+    <p class="footer-dir" style="margin-top: 12px;">
+      Lun – Jue · 10:00 a 13:00 y 17:00 a 20:00<br>
+      Viernes · 10:00 a 13:00
+    </p>
+    <span class="footer-num">Autoescuela familiar</span>
+  </footer>
+</div>
+
+<script>
+  (function() {
+    var limite = new Date();
+    // Próximo viernes 10 de julio a las 23:59, sea cual sea el año en curso
+    limite.setMonth(6, 10); // mes 6 = julio (0-indexado)
+    limite.setHours(23, 59, 59, 0);
+
+    var ahora = new Date();
+    var numEl = document.getElementById('numDias');
+    var textoEl = document.getElementById('textoDias');
+
+    var diffMs = limite - ahora;
+    var diffDias = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+    // Reescribimos el contenido completo del número (evita mezclar el placeholder "–")
+    if (diffDias > 1) {
+      numEl.innerHTML = diffDias + '<span>días</span>';
+    } else if (diffDias === 1) {
+      numEl.innerHTML = '1<span>día</span>';
+    } else if (diffDias === 0) {
+      numEl.innerHTML = 'HOY<span>último día</span>';
+    } else {
+      numEl.innerHTML = '–<span>plazo cerrado</span>';
+    }
+  })();
+</script>
+
+</body>
+</html>
